@@ -1,148 +1,201 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search');
-    const sections = document.querySelectorAll('.section-content');
-    let searchTimeout;
-    let notificationTimeout;
-    let originalContents = new Map();
+    try {
+        const searchInput = document.getElementById('search');
+        const sections = document.querySelectorAll('.section-content');
+        let searchTimeout;
+        let notificationTimeout;
+        let originalContents = new WeakMap(); // Usando WeakMap per migliore gestione della memoria
 
-    // Salva il contenuto originale di tutte le sezioni
-    sections.forEach(section => {
-        originalContents.set(section, section.innerHTML);
-    });
-
-    function resetSection(section) {
-        section.innerHTML = originalContents.get(section);
-    }
-
-    function showNotification(message) {
-        clearTimeout(notificationTimeout);
-        const existingNotification = document.querySelector('.search-notification');
-        if (existingNotification) {
-            existingNotification.remove();
+        // Inizializzazione sicura
+        if (!searchInput || !sections.length) {
+            console.warn('Elementi di ricerca non trovati');
+            return;
         }
 
-        const notification = document.createElement('div');
-        notification.className = 'search-notification';
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        notificationTimeout = setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
+        // Salva il contenuto originale in modo sicuro
+        sections.forEach(section => {
+            try {
+                originalContents.set(section, section.innerHTML);
+            } catch (error) {
+                console.warn('Errore nel salvare il contenuto originale:', error);
             }
-        }, 5000);
-    }
+        });
 
-    function escapeRegExp(string) {
-        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
+        function resetSection(section) {
+            try {
+                const originalContent = originalContents.get(section);
+                if (originalContent) {
+                    section.innerHTML = originalContent;
+                }
+            } catch (error) {
+                console.warn('Errore nel reset della sezione:', error);
+            }
+        }
 
-    function highlightText(section, searchTerms) {
-        const container = document.createElement('div');
-        container.innerHTML = originalContents.get(section);
+        function showNotification(message) {
+            try {
+                clearTimeout(notificationTimeout);
+                const existingNotification = document.querySelector('.search-notification');
+                if (existingNotification) {
+                    existingNotification.remove();
+                }
 
-        // Funzione ricorsiva per attraversare e modificare i nodi di testo
-        function processNode(node) {
-            if (node.nodeType === 3) { // Nodo testo
-                let content = node.textContent;
-                let highlighted = false;
-                
+                const notification = document.createElement('div');
+                notification.className = 'search-notification';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                notificationTimeout = setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 5000);
+            } catch (error) {
+                console.warn('Errore nella notifica:', error);
+            }
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function highlightText(section, searchTerms) {
+            try {
+                const originalContent = originalContents.get(section);
+                if (!originalContent) return section.innerHTML;
+
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = originalContent;
+
                 searchTerms.forEach(term => {
-                    const regex = new RegExp(`(${escapeRegExp(term)})`, 'gi');
-                    if (regex.test(content.toLowerCase())) {
-                        content = content.replace(regex, '<mark class="search-highlight">$1</mark>');
-                        highlighted = true;
+                    if (!term) return;
+                    
+                    const walker = document.createTreeWalker(
+                        tempDiv,
+                        NodeFilter.SHOW_TEXT,
+                        null,
+                        false
+                    );
+
+                    const nodes = [];
+                    let node;
+                    while (node = walker.nextNode()) {
+                        nodes.push(node);
+                    }
+
+                    nodes.forEach(textNode => {
+                        const text = textNode.textContent;
+                        const regex = new RegExp(`(${term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                        
+                        if (regex.test(text)) {
+                            const span = document.createElement('span');
+                            span.innerHTML = text.replace(regex, '<mark class="search-highlight">$1</mark>');
+                            textNode.parentNode.replaceChild(span, textNode);
+                        }
+                    });
+                });
+
+                return tempDiv.innerHTML;
+            } catch (error) {
+                console.warn('Errore nell\'highlighting:', error);
+                return section.innerHTML;
+            }
+        }
+
+        function searchContent() {
+            try {
+                const query = searchInput.value.trim();
+
+                // Reset all sections to their original content
+                sections.forEach(section => {
+                    resetSection(section);
+                });
+
+                if (!query) {
+                    sections.forEach((section, index) => {
+                        section.style.display = index === 0 ? 'block' : 'none';
+                    });
+                    return;
+                }
+
+                let foundResults = false;
+                const searchTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 0);
+
+                sections.forEach(section => {
+                    const sectionText = section.textContent.toLowerCase();
+                    const matchesAllTerms = searchTerms.every(term => sectionText.includes(term));
+
+                    if (matchesAllTerms) {
+                        section.style.display = 'block';
+                        foundResults = true;
+                        section.innerHTML = highlightText(section, searchTerms);
+                        
+                        // Rimuovi l'highlight dopo 5 secondi
+                        setTimeout(() => {
+                            const highlights = section.querySelectorAll('.search-highlight');
+                            highlights.forEach(highlight => {
+                                highlight.classList.add('search-highlight-fade');
+                            });
+                        }, 5000);
+                    } else {
+                        section.style.display = 'none';
                     }
                 });
 
-                if (highlighted) {
-                    const span = document.createElement('span');
-                    span.innerHTML = content;
-                    node.parentNode.replaceChild(span, node);
+                if (!foundResults) {
+                    sections[0].style.display = 'block';
+                    showNotification('Nessun risultato trovato per: ' + query);
                 }
-            } else if (node.nodeType === 1) { // Elemento
-                Array.from(node.childNodes).forEach(processNode);
+            } catch (error) {
+                console.error('Errore nella ricerca:', error);
+                resetAllSections();
             }
         }
 
-        Array.from(container.childNodes).forEach(processNode);
-        return container.innerHTML;
-    }
-
-    function searchContent() {
-        try {
-            const query = searchInput.value.trim();
-
-            // Reset all sections to their original content
-            sections.forEach(section => {
-                resetSection(section);
-            });
-
-            if (!query) {
-                sections.forEach((section, index) => {
+        function resetAllSections() {
+            sections.forEach((section, index) => {
+                try {
+                    resetSection(section);
                     section.style.display = index === 0 ? 'block' : 'none';
-                });
-                return;
-            }
-
-            let foundResults = false;
-            const searchTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 0);
-
-            sections.forEach(section => {
-                const sectionText = section.textContent.toLowerCase();
-                const matchesAllTerms = searchTerms.every(term => sectionText.includes(term));
-
-                if (matchesAllTerms) {
-                    section.style.display = 'block';
-                    foundResults = true;
-                    section.innerHTML = highlightText(section, searchTerms);
-                    
-                    // Rimuovi l'highlight dopo 5 secondi
-                    setTimeout(() => {
-                        const highlights = section.querySelectorAll('.search-highlight');
-                        highlights.forEach(highlight => {
-                            highlight.classList.add('search-highlight-fade');
-                        });
-                    }, 5000);
-                } else {
-                    section.style.display = 'none';
+                } catch (error) {
+                    console.warn('Errore nel reset generale:', error);
                 }
             });
+        }
 
-            if (!foundResults) {
-                sections[0].style.display = 'block';
-                showNotification('Nessun risultato trovato per: ' + query);
+        // Event Listeners con gestione errori
+        searchInput.addEventListener('input', () => {
+            try {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(searchContent, 300);
+            } catch (error) {
+                console.warn('Errore nell\'input search:', error);
             }
-        } catch (error) {
-            console.error('Error in searchContent:', error);
-            sections.forEach((section, index) => {
-                resetSection(section);
-                section.style.display = index === 0 ? 'block' : 'none';
-            });
-        }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            try {
+                if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    resetAllSections();
+                    searchInput.blur();
+                }
+            } catch (error) {
+                console.warn('Errore nella gestione ESC:', error);
+            }
+        });
+
+        // Cleanup sicuro
+        window.addEventListener('beforeunload', () => {
+            try {
+                sections.forEach(section => resetSection(section));
+                originalContents = null;
+            } catch (error) {
+                console.warn('Errore nel cleanup:', error);
+            }
+        });
+
+    } catch (error) {
+        console.error('Errore critico nell\'inizializzazione:', error);
     }
-
-    // Gestione eventi con debounce
-    searchInput.addEventListener('input', () => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(searchContent, 300);
-    });
-
-    // Gestione tasto ESC e reset
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            searchInput.value = '';
-            sections.forEach((section, index) => {
-                resetSection(section);
-                section.style.display = index === 0 ? 'block' : 'none';
-            });
-            searchInput.blur();
-        }
-    });
-
-    // Cleanup quando si lascia la pagina
-    window.addEventListener('beforeunload', () => {
-        sections.forEach(section => resetSection(section));
-        originalContents.clear();
-    });
 });
