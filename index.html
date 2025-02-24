@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Codice Penale di Los Santos</h1>
+        <h1 id="main-title">Codice Penale di Los Santos</h1>
         <input type="text" id="search" placeholder="Cerca...">
     </header>
     <nav>
@@ -143,19 +143,322 @@
             <p>Il codice penale di Los Santos definisce i reati e le relative sanzioni, garantendo la tutela dei diritti dei cittadini e la sicurezza pubblica.</p>
             
             <h3>1. Reati e Sanzioni Penali</h3>
-            <ul>
-                <li><strong>Art. 1.1</strong> - Raggiungimento di 6 reati di classe A</li>
-                <li><strong>Art. 1.2</strong> - Associazione a Delinquere</li>
-                <li><strong>Art. 1.3</strong> - Associazione a Delinquere di stampo mafioso</li>
-                <li><strong>Art. 1.4</strong> - Associazione a Delinquere di stampo terroristico</li>
-                <li><strong>Art. 1.5</strong> - Attentato alle Istituzioni Governative</li>
-                <li><strong>Art. 1.6</strong> - Contrabbando Internazionale di Sigarette (maggiore 40 pacchetti)</li>
-                <li><strong>Art. 1.7</strong> - Detenzione di arma Illegale</li>
-                <li><strong>Art. 1.8</strong> - Evasione</li>
-                <li><strong>Art. 1.9</strong> - Fabbricaggio di Documenti Falsi</li>
-                <li><strong>Art. 1.10</strong> - Falsa Testimonianza</li>
-                <!-- ...continued with all articles through 1.78... -->
-            </ul>
+            <div class="reati-list">
+                <ul>
+                    <li>
+                        <strong>Art. 1.1 - Raggiungimento di 6 reati di classe A</strong>
+                        <p>Accumulazione di sei reati di massima gravità che determina il rinvio immediato a giudizio e sanzioni aggravate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.2 - Associazione a Delinquere</strong>
+                        <p>Organizzazione di individui finalizzata alla commissione di reati; comporta pene detentive severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.3 - Associazione a Delinquere di stampo mafioso</strong>
+                        <p>Struttura organizzata in stile mafioso; sanzioni maggiorate per la gravità e l'organizzazione criminale.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.4 - Associazione a Delinquere di stampo terroristico</strong>
+                        <p>Attività finalizzata a scopi terroristici; punizione estremamente severa e misure di sicurezza rafforzate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.5 - Attentato alle Istituzioni Governative</strong>
+                        <p>Atti di violenza o sabotaggio contro le istituzioni; comporta pene molto severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.6 - Contrabbando Internazionale di Sigarette (oltre 40 pacchetti)</strong>
+                        <p>Traffico illecito di sigarette in quantità rilevante; sanzioni sia pecuniarie che detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.7 - Detenzione di arma Illegale</strong>
+                        <p>Possesso di arma senza autorizzazione; punizione severa con possibili pene detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.8 - Evasione</strong>
+                        <p>Sottrazione agli obblighi fiscali o penali; sanzioni economiche e, in casi gravi, detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.9 - Fabbricaggio di Documenti Falsi</strong>
+                        <p>Produzione e uso di documenti contraffatti; reato punito con sanzioni sia penali che amministrative.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.10 - Falsa Testimonianza</strong>
+                        <p>Dichiarazioni mendaci in ambito giudiziario; prevede pene per ostruzione della giustizia.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.11 - Falsificazione/Occultamento Prove</strong>
+                        <p>Manipolazione o distruzione di prove in un procedimento; aggravante che porta a pene più severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.12 - Favoreggiamento</strong>
+                        <p>Aiuto o agevolazione a chi ha commesso un reato; punito con sanzioni che variano in base al danno arrecato.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.13 - Istigazione/Aiuto al Suicidio</strong>
+                        <p>Incitamento a commettere o assistenza in atti suicidari; reato con conseguenze aggravate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.14 - Omicidio (permadeath)</strong>
+                        <p>Uccisione deliberata con esiti irreversibili; pena massima prevista dalla legge.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.15 - Omicidio di Pubblico Ufficiale (permadeath)</strong>
+                        <p>Uccisione di un funzionario pubblico; reato punito con le pene più severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.16 - Possesso di Documenti Falsi</strong>
+                        <p>Detenzione e uso di documenti contraffatti; sanzionato con pene detentive e multe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.17 - Sequestro di Persona</strong>
+                        <p>Detenzione illegale di un individuo contro la sua volontà; reato grave con pene severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.18 - Sequestro di Pubblico Ufficiale</strong>
+                        <p>Detenzione illegale di un funzionario; aggravante rispetto al sequestro comune.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.19 - Tentata Corruzione di Pubblico Ufficiale</strong>
+                        <p>Tentativo di corrompere un funzionario; sanzionato con pene detentive e interdittive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.20 - Tentato Omicidio</strong>
+                        <p>Fallito tentativo di uccisione; reato grave con conseguenze aggravate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.21 - Tentato Omicidio a Pubblico Ufficiale</strong>
+                        <p>Tentativo di uccidere un funzionario; punizione particolarmente severa.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.22 - Terrorismo</strong>
+                        <p>Atti volti a seminare terrore nella popolazione; reato che prevede pene estremamente severe e misure di sicurezza straordinarie.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.23 - Tortura</strong>
+                        <p>Inflizione intenzionale di sofferenze fisiche o mentali; reato di gravità eccezionale.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.24 - Traffico di Armi Fuoco</strong>
+                        <p>Commercio illecito di armi da fuoco; sanzioni sia economiche che detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.25 - Traffico Internazionale di Armi Fuoco</strong>
+                        <p>Commercio illecito di armi oltre i confini; reato con pene molto severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.26 - Traffico Internazionale di Sostanze Stupefacenti (oltre 101 unità)</strong>
+                        <p>Distribuzione illegale di droghe in quantità elevata; reato punito con pene detentive prolungate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.27 - Vendita/Acquisto di Armi non Autorizzato</strong>
+                        <p>Transazioni illegali di armi; sanzioni severe per la violazione delle normative sul controllo delle armi.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.28 - Violazione di Proprietà dello Stato/Federale/Militare</strong>
+                        <p>Danneggiamento o accesso non autorizzato a proprietà governative; reato con aggravanti specifiche.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.29 - Violazione Libertà Vigilata</strong>
+                        <p>Inosservanza delle condizioni imposte dalla libertà vigilata; comporta il rinnovo della misura cautelare o il rinvio a giudizio.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.30 - Violenza Domestica</strong>
+                        <p>Abuso fisico o psicologico all'interno dell'ambiente familiare; reato punito con misure di protezione per le vittime e pene per il colpevole.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.31 - Aggressione a Pubblico Ufficiale</strong>
+                        <p>Atti violenti contro funzionari pubblici durante l'esercizio delle loro funzioni; reato aggravato.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.32 - Contrabbando di Sigarette (oltre 20 unità)</strong>
+                        <p>Traffico illecito di sigarette in quantità non trascurabile; sanzioni pecuniarie e detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.33 - Detenzione Illegale di Arma Legale</strong>
+                        <p>Possesso di arma legale in violazione delle normative di detenzione; pena che prevede la revoca del porto d'armi e sanzioni penali.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.34 - Estorsione</strong>
+                        <p>Richiesta di denaro o favori mediante minacce; reato punito con pene detentive e interdizioni.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.35 - Falsificazione di Documenti Ufficiali</strong>
+                        <p>Contraffazione di documenti emessi da enti pubblici; reato con sanzioni severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.36 - Furto di Materiale (Rame e Tabacco per Sigari)</strong>
+                        <p>Sottrazione di materiali preziosi e commercialmente rilevanti; punito con pene detentive e restituzione del materiale.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.37 - Incauto Affidamento</strong>
+                        <p>Affidamento negligente di persone o beni, causando danni; reato punito con sanzioni pecuniarie e, in casi gravi, penali.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.38 - Intralcio alla Giustizia</strong>
+                        <p>Ostacolo al corretto svolgimento di un procedimento giudiziario; aggravante che aumenta la pena complessiva.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.39 - Omissione di Soccorso</strong>
+                        <p>Mancata assistenza in situazioni di emergenza; reato che prevede sanzioni pecuniarie e detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.40 - Organizzazione di Gare Clandestine</strong>
+                        <p>Promozione o gestione di competizioni non autorizzate; sanzionato con multe e possibili pene detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.41 - Percosse</strong>
+                        <p>Uso eccessivo della forza fisica; reato punito in base alla gravità delle lesioni.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.42 - Rissa</strong>
+                        <p>Coinvolgimento in scontri di gruppo; sanzioni proporzionate all'intensità e alle conseguenze degli scontri.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.43 - Sostituzione di Persona</strong>
+                        <p>Impersonificazione o uso fraudolento dell'identità altrui; reato con pene che includono sanzioni economiche e detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.44 - Spaccio di Sostanze Stupefacenti (51–100 unità)</strong>
+                        <p>Distribuzione illegale di droghe in quantità moderata; punito con detenzione e multe elevate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.45 - Spaccio di Sostanze Stupefacenti (6–50 unità)</strong>
+                        <p>Distribuzione illegale di droghe in quantità ridotta; sanzioni meno gravose ma comunque significative.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.46 - Utilizzo Improprio di Arma Contundente o da Taglio</strong>
+                        <p>Uso illecito di armi da taglio o contundenti in situazioni non autorizzate; reato che comporta sanzioni immediate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.47 - Utilizzo Improprio di Arma da Fuoco</strong>
+                        <p>Uso non autorizzato o irresponsabile di armi da fuoco; prevede pene aggravate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.48 - Violazione di Proprietà Privata</strong>
+                        <p>Accesso o danneggiamento di proprietà privata senza consenso; reato punito con sanzioni pecuniarie e detentive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.49 - Violazione Ordinanza Restrittiva</strong>
+                        <p>Inosservanza di divieti imposti dalle autorità; sanzioni amministrative e, in casi ripetuti, penali.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.50 - Atti Persecutori / Stalking</strong>
+                        <p>Comportamenti sistematici di molestia e persecuzione; reato che può comportare l'allontanamento dell'autore.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.51 - Pesca Illegale</strong>
+                        <p>Pratiche di pesca in violazione delle normative; sanzionato con multe e, in casi gravi, detenzione.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.52 - Calunnia</strong>
+                        <p>Accuse false e infondate che ledono l'onore; reato punito con sanzioni pecuniarie e interdittive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.53 - Furto in Casa</strong>
+                        <p>Sottrazione di beni all'interno di abitazioni private; reato che prevede pene detentive e risarcimento.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.54 - Oltraggio alla Corte</strong>
+                        <p>Comportamenti lesivi nei confronti dell'autorità giudiziaria; sanzionato con pene aggravate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.55 - Organizzazione di Raduno/Manifestazione non Autorizzato</strong>
+                        <p>Promozione o gestione di assemblee senza autorizzazioni; prevede sanzioni amministrative e penali.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.56 - Resistenza a Pubblico Ufficiale</strong>
+                        <p>Opposizione fisica o verbale all'azione delle forze dell'ordine; reato che comporta aumento della pena.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.57 - Atti Osceni in Luogo Pubblico</strong>
+                        <p>Comportamenti indecenti in spazi pubblici; sanzioni pecuniarie e, in casi estremi, misure restrittive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.58 - Mancata Identificazione</strong>
+                        <p>Rifiuto di identificarsi alle autorità quando richiesto; reato minore con sanzioni amministrative.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.59 - Molestie</strong>
+                        <p>Atti di molestia verso persone vulnerabili; prevede pene che variano in base alla gravità e recidiva.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.60 - Disturbo della Quiete Pubblica</strong>
+                        <p>Creazione di situazioni di rumore o disordine; sanzioni amministrative e, se reiterate, penali.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.61 - Minacce</strong>
+                        <p>Uso di intimidazioni per indurre timore; reato che comporta sanzioni aumentate in caso di recidiva.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.62 - Minacce a Pubblico Ufficiale</strong>
+                        <p>Intimidazioni verso funzionari; aggravante che prevede pene molto severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.63 - Oltraggio a Pubblico Ufficiale</strong>
+                        <p>Atti denigratori contro autorità; punito con sanzioni penali rafforzate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.64 - Possesso di Sostanze Stupefacenti (fino a 5 unità)</strong>
+                        <p>Detenzione di droghe in quantità minima; reato punito con sanzioni ridotte, salvo recidiva.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.65 - Procurato Allarme</strong>
+                        <p>Creazione ingiustificata di panico; sanzionato con multe e, in casi gravi, detenzione.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.66 - Volto Occulto</strong>
+                        <p>Uso di maschere per occultare l'identità in pubblico; reato che può aggravare altre fattispecie.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.67 - Rapina a Mano Armata (Lavanderia)</strong>
+                        <p>Rapina con uso di armi in lavanderie; reato con pene severe e misure interdittive.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.68 - Rapina</strong>
+                        <p>Sottrazione violenta di denaro o beni; reato punito con pene detentive elevate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.69 - Rapina a Mano Armata (Minimarket)</strong>
+                        <p>Rapina armata in piccoli esercizi commerciali; sanzioni proporzionate al danno.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.70 - Rapina a Mano Armata al Supermarket</strong>
+                        <p>Rapina armata in grandi punti vendita; reato con aggravanti per l'alta visibilità.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.71 - Rapina a Mano Armata (Cash Exchange/ATM)</strong>
+                        <p>Sottrazione di denaro da sportelli automatici; punizione severa per l'elevata pericolosità.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.72 - Rapina a Mano Armata (Portavalori)</strong>
+                        <p>Rapina armata di mezzi che trasportano valori; reato con pene massime.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.73 - Rapina a Mano Armata (Fleeca Bank)</strong>
+                        <p>Rapina armata in filiali bancarie; sanzioni particolarmente severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.74 - Rapina a Mano Armata (Gioielleria)</strong>
+                        <p>Rapina in gioiellerie; reato punito con pene aggravate per l'alto valore dei beni.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.75 - Rapina a Mano Armata (Maze Bank)</strong>
+                        <p>Rapina in istituti bancari di alto profilo; prevede pene detentive prolungate.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.76 - Rapina a Mano Armata (Blaine Country)</strong>
+                        <p>Rapina in contesti specifici di Blaine County; sanzioni stabilite in base al contesto locale.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.77 - Rapina a Mano Armata (Pacific Standard)</strong>
+                        <p>Rapina in contesti di alto profilo; reato con pene estremamente severe.</p>
+                    </li>
+                    <li>
+                        <strong>Art. 1.78 - Decadenza della Responsabilità Genitoriale</strong>
+                        <p>Perdita dei diritti genitoriali a seguito di gravi negligenze o abusi.</p>
+                    </li>
+                </ul>
+            </div>
 
             <h3>2. Illeciti Penali - Fiscali</h3>
             <ul>
@@ -387,6 +690,22 @@
                     if (targetSection) {
                         targetSection.style.display = 'block';
                     }
+                });
+            });
+
+            // Aggiungi event listener per il reset della pagina
+            document.getElementById('main-title').addEventListener('click', () => {
+                // Pulisci la barra di ricerca
+                document.getElementById('search').value = '';
+                
+                // Rimuovi tutti gli highlight
+                document.querySelectorAll('.search-highlight').forEach(el => {
+                    el.classList.add('search-highlight-fade');
+                });
+                
+                // Mostra solo la prima sezione
+                document.querySelectorAll('.section-content').forEach((section, index) => {
+                    section.style.display = index === 0 ? 'block' : 'none';
                 });
             });
         });
