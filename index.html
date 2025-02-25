@@ -1,33 +1,102 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codice Penale di Los Santos</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1 id="main-title">Codice Penale di Los Santos</h1>
-        <input type="text" id="search" placeholder="Cerca...">
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#introduzione">Introduzione</a></li>
-            <li><a href="#emendamenti">Emendamenti Costituzionali</a></li>
-            <li><a href="#organizzazione-governo">Organizzazione del Governo</a></li>
-            <li><a href="#diritti-liberta">Diritti e Libertà</a></li>
-            <li><a href="#sistema-giudiziario">Sistema Giudiziario</a></li>
-            <li><a href="#codice-penale">Codice Penale</a></li>
-            <li><a href="#codice-procedurale">Codice Procedurale</a></li>
-            <li><a href="#codice-stradale">Codice Stradale</a></li>
-            <li><a href="#norme-amministrative">Norme Amministrative</a></li>
-            <li><a href="#disposizioni-finali">Disposizioni Finali</a></li>
-            <li><a href="#definizioni">Definizioni</a></li>
-            <li><a href="#livello-allerta">Livello di Allerta</a></li>
-        </ul>
-    </nav>
-    <main class="container">
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu" class="mobile-menu-btn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-logo" id="main-title">
+                <i class="fas fa-balance-scale"></i>
+                <span>Codice Penale Los Santos</span>
+            </a>
+        </div>
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#introduzione" class="nav-link active">
+                            <i class="fas fa-book"></i> Introduzione
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#emendamenti" class="nav-link">
+                            <i class="fas fa-gavel"></i> Emendamenti Costituzionali
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#organizzazione-governo" class="nav-link">
+                            <i class="fas fa-university"></i> Organizzazione del Governo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#diritti-liberta" class="nav-link">
+                            <i class="fas fa-shield-alt"></i> Diritti e Libertà
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sistema-giudiziario" class="nav-link">
+                            <i class="fas fa-balance-scale"></i> Sistema Giudiziario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#codice-penale" class="nav-link">
+                            <i class="fas fa-book"></i> Codice Penale
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#codice-procedurale" class="nav-link">
+                            <i class="fas fa-book"></i> Codice Procedurale
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#codice-stradale" class="nav-link">
+                            <i class="fas fa-car"></i> Codice Stradale
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#norme-amministrative" class="nav-link">
+                            <i class="fas fa-cogs"></i> Norme Amministrative
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#disposizioni-finali" class="nav-link">
+                            <i class="fas fa-file-alt"></i> Disposizioni Finali
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#definizioni" class="nav-link">
+                            <i class="fas fa-book"></i> Definizioni
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#livello-allerta" class="nav-link">
+                            <i class="fas fa-exclamation-triangle"></i> Livello di Allerta
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Cerca nel codice penale...">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
         <section class="section-content" id="introduzione">
             <h2>1. Introduzione e Principi Generali</h2>
             <p>Il presente documento costituisce il corpus normativo di Los Santos, ispirato ai principi fondamentali della legislazione americana, ma adattato in forma semplificata alle esigenze della città.</p>
@@ -397,7 +466,7 @@
                         <strong>Art. 1.63 - Oltraggio a Pubblico Ufficiale</strong>
                         <p>Atti denigratori contro autorità; punito con sanzioni penali rafforzate.</p>
                     </li>
-                    <li>
+                    <li></li>
                         <strong>Art. 1.64 - Possesso di Sostanze Stupefacenti (fino a 5 unità)</strong>
                         <p>Detenzione di droghe in quantità minima; reato punito con sanzioni ridotte, salvo recidiva.</p>
                     </li>
@@ -449,7 +518,7 @@
                         <strong>Art. 1.76 - Rapina a Mano Armata (Blaine Country)</strong>
                         <p>Rapina in contesti specifici di Blaine County; sanzioni stabilite in base al contesto locale.</p>
                     </li>
-                    <li>
+                    <li></li>
                         <strong>Art. 1.77 - Rapina a Mano Armata (Pacific Standard)</strong>
                         <p>Rapina in contesti di alto profilo; reato con pene estremamente severe.</p>
                     </li>
@@ -667,6 +736,12 @@
         </section>
     </main>
 
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script src="search.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // All'inizio, nascondi tutte le sezioni tranne la prima
@@ -708,8 +783,70 @@
                     section.style.display = index === 0 ? 'block' : 'none';
                 });
             });
+
+            // Mobile menu handling
+            const mobileMenu = document.getElementById('mobile-menu');
+            const sidebar = document.querySelector('.sidebar');
+
+            mobileMenu?.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!sidebar.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            // Debug check
+            const debugCheck = () => {
+                const elements = document.querySelectorAll('*');
+                elements.forEach(el => {
+                    if (getComputedStyle(el).zIndex === 'auto') {
+                        console.warn('Element without z-index:', el);
+                    }
+                    if (el.offsetWidth > document.documentElement.offsetWidth) {
+                        console.warn('Horizontal overflow:', el);
+                    }
+                });
+            };
+
+            // Run debug check on load
+            debugCheck();
+
+            // Check for broken images
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', () => {
+                    console.warn('Broken image:', img.src);
+                });
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'light') {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // Active Link Handling
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelector('.nav-link.active').classList.remove('active');
+                e.target.classList.add('active');
+            });
         });
     </script>
-    <script src="search.js"></script>
 </body>
 </html>
